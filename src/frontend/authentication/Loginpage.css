@@ -1,0 +1,38 @@
+.login-page {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+
+  .error-message {
+    color: red;
+  }
+  
