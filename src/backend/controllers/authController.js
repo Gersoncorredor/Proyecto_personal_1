@@ -23,7 +23,7 @@ const Login = async (req, res) => {
 
     const user = users[0];
 
-    if (user.lockUntil && new Date( user.lockUntil > new Date())){
+    if (user.lockUntil && new Date( user.lockUntil )> new Date()){
     return res.status(400).json({ message:'Cuenta bloqueada, Intente mas tarde.'})
     }
 
