@@ -10,7 +10,8 @@ const config = {
     database: process.env.DB_DATABASE,
   },
   key: {
-    cryptoKey: process.env.CRYPTO_KEY, // Accede a la clave secreta para cifrado
+    cryptoKey: process.env.CRYPTO_KEY,
+    resendKey:process.env.RESEND_KEY // Accede a la clave secreta para cifrado
   },
 }
 

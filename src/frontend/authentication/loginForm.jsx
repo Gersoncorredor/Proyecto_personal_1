@@ -1,25 +1,34 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Modal, { useModal } from "../Modal"
 
-function LoginForm () {
+
+function LoginForm() {
   const navigate = useNavigate()
-
-  const [formData, setformData] = useState({
+  const { isOpen, openModal, closeModal } = useModal()
+  const [formData, setFormData] = useState({
     email: "",
     password: ""
+  })
+  const [recoverData, setRecoverData] = useState({
+    email: "",
+    password: "",
+    verifyPassword: "",
+    token: ""
   })
 
   const [loading, setloading] = useState(false)
   const [error, setError] = useState("")
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (stateSetter) => (e) => {
     const { name, value } = e.target
-    setformData((prevData) => ({
+    stateSetter((prevData) => ({
       ...prevData,
       [name]: value
     }))
     setError("")
+
   }
 
   const isValidEmail = (email) => {
@@ -60,30 +69,61 @@ function LoginForm () {
 
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type='text'
-          name='email'
-          value={formData.email}
-          onChange={handleInputChange}
-          placeholder='Email'
-        />
 
-        <input
-          type='password'
-          name='password'
-          value={formData.password}
-          onChange={handleInputChange}
-          placeholder='Contraseña'
-        />
-        {error && <p className='error-message'>{error}</p>}
-      </div>
-      <button type='submit' disabled={loading}>
-        {loading ? "Cargando..." : "Iniciar Sesion"}
-      </button>
-    </form>
+  const s = () => {
+    alert("hola")
+  }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            className="lg-input"
+            type='text'
+            name='email'
+            value={formData.email}
+            onChange={handleInputChange(setFormData)}
+            placeholder='Email'
+            disabled={loading}
+          />
+
+          <input
+            className="lg-input"
+            type='password'
+            name='password'
+            value={formData.password}
+            onChange={handleInputChange(setFormData)}
+            placeholder='Contraseña'
+            disabled={loading}
+          />
+          {error && <p className='error-message'>{error}</p>}
+        </div>
+        <button className="lg-button" type='submit' disabled={loading}>
+          {loading ? "Cargando..." : "Iniciar Sesion"}
+        </button>
+      </form>
+      <button className="lg-button" onClick={openModal}>Recuperar contraseña</button>
+      <Modal isOpen={isOpen} onClose={closeModal} title={"Recuperar contraseña"} onAccept={s}>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Ingrese un correo electrónico para recuperar su contraseña
+              <input
+                className="lg-input"
+                type='text'
+                name='email'
+                value={recoverData.email}
+                onChange={handleInputChange(setRecoverData)}
+                placeholder='Email'
+              />
+            </label>
+          </div>
+        </form>
+
+
+      </Modal>
+
+    </>
   )
 }
 

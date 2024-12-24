@@ -9,13 +9,13 @@
     margin-bottom: 15px;
   }
   
-  input {
-    width: 100%;
+  .lg-input {
+    width: 90%;
     padding: 8px;
     margin-top: 5px;
   }
   
-  button {
+  .lg-button {
     padding: 10px 15px;
     background-color: #4CAF50;
     color: white;
@@ -24,7 +24,7 @@
     width: 100%;
   }
   
-  button:disabled {
+  lg-button:disabled {
     background-color: #ccc;
   }
   
