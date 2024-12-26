@@ -71,7 +71,7 @@ function LoginForm() {
 
 
   const s = () => {
-    alert("hola")
+    
   }
 
   return (
@@ -115,6 +115,37 @@ function LoginForm() {
                 value={recoverData.email}
                 onChange={handleInputChange(setRecoverData)}
                 placeholder='Email'
+              />
+            </label>
+<label htmlFor="Token">Ingrese el código que se le envió al correo
+              <input
+                className="lg-input"
+                type='text'
+                name='token'
+                value={recoverData.token}
+                onChange={handleInputChange(setRecoverData)}
+                placeholder='Token'
+              />
+            </label>
+  <label htmlFor="Password">Ingrese la nueva contraseña. 
+<input
+                className="lg-input"
+                type='text'
+                name='Password'
+                value={recoverData.password}
+                onChange={handleInputChange(setRecoverData)}
+                placeholder='Password'
+              />
+            </label>
+
+  <label htmlFor="verifyPassword ">Confirma la contraseña. 
+<input
+                className="lg-input"
+                type='text'
+                name='verifyPassword'
+                value={recoverData.verifyPassword}
+                onChange={handleInputChange(setRecoverData)}
+                placeholder='verify Password'
               />
             </label>
           </div>
